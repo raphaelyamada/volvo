@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Models;
-using Volvo.Cadastro.Repositories;
 using Volvo.Cadastro.Services;
 
 namespace Volvo.Cadastro.Controllers
@@ -22,15 +16,15 @@ namespace Volvo.Cadastro.Controllers
         }
 
         // GET: Caminhoes
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _cadastroService.ObterCaminhoes());
+            return View(_cadastroService.ObterCaminhoes());
         }
 
         // GET: Caminhoes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
-            var caminhao = await _cadastroService.ObterCaminhaoPorId(id);
+            var caminhao = _cadastroService.ObterCaminhaoPorId(id);
 
             if (caminhao == null)
             {
@@ -64,9 +58,9 @@ namespace Volvo.Cadastro.Controllers
         }
 
         // GET: Caminhoes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            var caminhao = await _cadastroService.ObterCaminhaoPorId(id);
+            var caminhao = _cadastroService.ObterCaminhaoPorId(id);
             
             if (caminhao == null)
             {
@@ -113,14 +107,14 @@ namespace Volvo.Cadastro.Controllers
         }
 
         // GET: Caminhoes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var caminhao = await _cadastroService.ObterCaminhaoPorId(id);
+            var caminhao = _cadastroService.ObterCaminhaoPorId(id);
 
             if (caminhao == null)
             {

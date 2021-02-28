@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Volvo.Cadastro.Models;
 
@@ -9,8 +7,8 @@ namespace Volvo.Cadastro.Services
 {
     public interface ICadastroService
     {
-        Task<IEnumerable<Caminhao>> ObterCaminhoes();
-        Task<Caminhao> ObterCaminhaoPorId(int? id);
+        IEnumerable<Caminhao> ObterCaminhoes();
+        Caminhao ObterCaminhaoPorId(int? id);
         SelectList ObterModelosSelectList();
         SelectList ObterModelosSelectList(int id);
         Task<int> IncluirCaminhao(Caminhao caminhao);

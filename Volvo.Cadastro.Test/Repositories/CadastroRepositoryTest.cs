@@ -1,12 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Moq;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Volvo.Cadastro.Controllers;
-using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Models;
 using Xunit;
 
@@ -15,20 +9,20 @@ namespace Volvo.Cadastro.Test.Repositories
     public class CadastroRepositoryTest: BaseRepositoryTest
     {
         [Fact]
-        public async Task ObterCaminhoes_QuandoChamado_RetornaLista()
+        public void ObterCaminhoes_QuandoChamado_RetornaLista()
         {
-            var caminhoes = await repository.ObterCaminhoes();
+            var caminhoes = repository.ObterCaminhoes();
 
             Assert.Equal(3, caminhoes.ToList().Count);
             Assert.IsType<List<Caminhao>>(caminhoes);
         }
 
         [Fact]
-        public async Task ObterCaminhaoPorId_QuandoEncontra_RetornaCaminhao()
+        public void ObterCaminhaoPorId_QuandoEncontra_RetornaCaminhao()
         {
             int idPesquisado = 2;
 
-            var caminhao = await repository.ObterCaminhaoPorId(idPesquisado);
+            var caminhao = repository.ObterCaminhaoPorId(idPesquisado);
 
             Assert.True(caminhao != null);
             Assert.Equal(idPesquisado, caminhao.IdCaminhao);
@@ -36,11 +30,11 @@ namespace Volvo.Cadastro.Test.Repositories
         }
 
         [Fact]
-        public async Task ObterCaminhaoPorId_QuandoNaoEncontra_RetornaNull()
+        public void ObterCaminhaoPorId_QuandoNaoEncontra_RetornaNull()
         {
             int idPesquisado = 5;
 
-            var caminhao = await repository.ObterCaminhaoPorId(idPesquisado);
+            var caminhao = repository.ObterCaminhaoPorId(idPesquisado);
 
             Assert.True(caminhao == null);
         }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,12 +16,12 @@ namespace Volvo.Cadastro.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Caminhao>> ObterCaminhoes()
+        public IEnumerable<Caminhao> ObterCaminhoes()
         {
             return _context.Caminhoes.Include(c => c.Modelo).ToList();
         }
 
-        public async Task<Caminhao> ObterCaminhaoPorId(int id)
+        public Caminhao ObterCaminhaoPorId(int id)
         {
             return _context.Caminhoes
                 .Include(c => c.Modelo)

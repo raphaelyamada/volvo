@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Volvo.Cadastro.Models;
 using Xunit;
@@ -12,20 +10,20 @@ namespace Volvo.Cadastro.Test.Services
     public class CadastroServiceTest: BaseServiceTest
     {
         [Fact]
-        public async Task ObterCaminhoes_QuandoChamado_RetornaLista()
+        public void ObterCaminhoes_QuandoChamado_RetornaLista()
         {
-            var caminhoes = await service.ObterCaminhoes();
+            var caminhoes = service.ObterCaminhoes();
 
             Assert.Equal(3, caminhoes.ToList().Count);
             Assert.IsType<List<Caminhao>>(caminhoes);
         }
 
         [Fact]
-        public async Task ObterCaminhaoPorId_QuandoEncontra_RetornaCaminhao()
+        public void ObterCaminhaoPorId_QuandoEncontra_RetornaCaminhao()
         {
             int idPesquisado = 2;
 
-            var caminhao = await service.ObterCaminhaoPorId(idPesquisado);
+            var caminhao = service.ObterCaminhaoPorId(idPesquisado);
 
             Assert.True(caminhao != null);
             Assert.Equal(idPesquisado, caminhao.IdCaminhao);
@@ -33,19 +31,19 @@ namespace Volvo.Cadastro.Test.Services
         }
 
         [Fact]
-        public async Task ObterCaminhaoPorId_QuandoNaoEncontra_RetornaNull()
+        public void ObterCaminhaoPorId_QuandoNaoEncontra_RetornaNull()
         {
             int idPesquisado = 5;
 
-            var caminhao = await service.ObterCaminhaoPorId(idPesquisado);
+            var caminhao = service.ObterCaminhaoPorId(idPesquisado);
 
             Assert.True(caminhao == null);
         }
 
         [Fact]
-        public async Task ObterCaminhaoPorId_QuandoIdNull_RetornaNull()
+        public void ObterCaminhaoPorId_QuandoIdNull_RetornaNull()
         {
-            var caminhao = await service.ObterCaminhaoPorId(null);
+            var caminhao = service.ObterCaminhaoPorId(null);
 
             Assert.True(caminhao == null);
         }

@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Volvo.Cadastro.Models;
 using Volvo.Cadastro.Repositories;
@@ -17,19 +15,19 @@ namespace Volvo.Cadastro.Services
             _cadastroRepository = cadastroRepository;
         }
 
-        public async Task<IEnumerable<Caminhao>> ObterCaminhoes()
+        public IEnumerable<Caminhao> ObterCaminhoes()
         {
-            return await _cadastroRepository.ObterCaminhoes();
+            return _cadastroRepository.ObterCaminhoes();
         }
 
-        public async Task<Caminhao> ObterCaminhaoPorId(int? id)
+        public Caminhao ObterCaminhaoPorId(int? id)
         {
             if (id == null)
             {
                 return null;
             }
 
-            return await _cadastroRepository.ObterCaminhaoPorId((int)id);
+            return _cadastroRepository.ObterCaminhaoPorId((int)id);
         }
 
         public SelectList ObterModelosSelectList()

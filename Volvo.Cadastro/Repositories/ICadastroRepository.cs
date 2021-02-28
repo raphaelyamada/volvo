@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volvo.Cadastro.Models;
 
@@ -8,8 +6,8 @@ namespace Volvo.Cadastro.Repositories
 {
     public interface ICadastroRepository
     {
-        Task<IEnumerable<Caminhao>> ObterCaminhoes();
-        Task<Caminhao> ObterCaminhaoPorId(int id);
+        IEnumerable<Caminhao> ObterCaminhoes();
+        Caminhao ObterCaminhaoPorId(int id);
         IEnumerable<Modelo> ObterModelos();
         Task<int> IncluirCaminhao(Caminhao caminhao);
         Task<int> AtualizarCaminhao(Caminhao caminhao);

@@ -1,5 +1,3 @@
-using System;
-
 namespace Volvo.Cadastro.Models
 {
     public class ErrorViewModel
