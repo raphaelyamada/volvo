@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volvo.Cadastro", "Volvo.Cadastro\Volvo.Cadastro.csproj", "{340B2B2C-03CE-43AC-A105-7F9ADF30337B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volvo.Cadastro.Test", "Volvo.Cadastro.Test\Volvo.Cadastro.Test.csproj", "{155301A5-9201-4BC4-81A6-685851363387}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{340B2B2C-03CE-43AC-A105-7F9ADF30337B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340B2B2C-03CE-43AC-A105-7F9ADF30337B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340B2B2C-03CE-43AC-A105-7F9ADF30337B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340B2B2C-03CE-43AC-A105-7F9ADF30337B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{155301A5-9201-4BC4-81A6-685851363387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155301A5-9201-4BC4-81A6-685851363387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155301A5-9201-4BC4-81A6-685851363387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155301A5-9201-4BC4-81A6-685851363387}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {677189AA-52FF-4B88-8C36-D55C29BA177C}
+	EndGlobalSection
+EndGlobal
