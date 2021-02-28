@@ -10,7 +10,7 @@ using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Models;
 using Xunit;
 
-namespace Volvo.Cadastro.Test
+namespace Volvo.Cadastro.Test.Repositories
 {
     public class CadastroRepositoryTest: BaseRepositoryTest
     {

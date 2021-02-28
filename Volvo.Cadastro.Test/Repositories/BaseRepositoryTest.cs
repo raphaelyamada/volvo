@@ -8,7 +8,7 @@ using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Models;
 using Volvo.Cadastro.Repositories;
 
-namespace Volvo.Cadastro.Test
+namespace Volvo.Cadastro.Test.Repositories
 {
     public class BaseRepositoryTest
     {

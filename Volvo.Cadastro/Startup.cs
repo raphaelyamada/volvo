@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Repositories;
+using Volvo.Cadastro.Services;
 
 namespace Volvo.Cadastro
 {
@@ -22,6 +23,7 @@ namespace Volvo.Cadastro
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICadastroRepository, CadastroRepository>();
+            services.AddScoped<ICadastroService, CadastroService>();
             services.AddControllersWithViews();
 
             var connection = this.Configuration.GetConnectionString("CadastroDB");
