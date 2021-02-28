@@ -6,19 +6,19 @@ using System.Linq;
 using System.Text;
 using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Models;
-using Volvo.Cadastro.Services;
+using Volvo.Cadastro.Repositories;
 
 namespace Volvo.Cadastro.Test
 {
-    public class BaseServiceTest
+    public class BaseRepositoryTest
     {
-        public CadastroService service;
+        public CadastroRepository repository;
         public Mock<CadastroContext> contexto;
 
-        public BaseServiceTest()
+        public BaseRepositoryTest()
         {
             contexto = ObterContexto();
-            service = new CadastroService(contexto.Object);
+            repository = new CadastroRepository(contexto.Object);
         }
 
         private DbSet<T> ObterDbSet<T>(List<T> sourceList) where T : class

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Volvo.Cadastro.Models;
 
-namespace Volvo.Cadastro.Services
+namespace Volvo.Cadastro.Repositories
 {
-    public interface ICadastroService
+    public interface ICadastroRepository
     {
         Task<IEnumerable<Caminhao>> ObterCaminhoes();
         Task<Caminhao> ObterCaminhaoPorId(int id);

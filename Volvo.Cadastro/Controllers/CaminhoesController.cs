@@ -7,23 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Models;
-using Volvo.Cadastro.Services;
+using Volvo.Cadastro.Repositories;
 
 namespace Volvo.Cadastro.Controllers
 {
     public class CaminhoesController : Controller
     {
-        private readonly ICadastroService _cadastroService;
+        private readonly ICadastroRepository _cadastroRepository;
 
-        public CaminhoesController(ICadastroService cadastroService)
+        public CaminhoesController(ICadastroRepository cadastroRepository)
         {
-            _cadastroService = cadastroService;
+            _cadastroRepository = cadastroRepository;
         }
 
         // GET: Caminhoes
         public async Task<IActionResult> Index()
         {
-            return View(await _cadastroService.ObterCaminhoes());
+            return View(await _cadastroRepository.ObterCaminhoes());
         }
 
         // GET: Caminhoes/Details/5
@@ -34,7 +34,7 @@ namespace Volvo.Cadastro.Controllers
                 return NotFound();
             }
 
-            var caminhao = await _cadastroService.ObterCaminhaoPorId((int)id);
+            var caminhao = await _cadastroRepository.ObterCaminhaoPorId((int)id);
 
             if (caminhao == null)
             {
@@ -47,7 +47,7 @@ namespace Volvo.Cadastro.Controllers
         // GET: Caminhoes/Create
         public IActionResult Create()
         {
-            ViewData["ModeloIdModelo"] = new SelectList(_cadastroService.ObterModelos(), "IdModelo", "DescricaoModelo");
+            ViewData["ModeloIdModelo"] = new SelectList(_cadastroRepository.ObterModelos(), "IdModelo", "DescricaoModelo");
             return View();
         }
 
@@ -60,10 +60,10 @@ namespace Volvo.Cadastro.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _cadastroService.IncluirCaminhao(caminhao);
+                await _cadastroRepository.IncluirCaminhao(caminhao);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModeloIdModelo"] = new SelectList(_cadastroService.ObterModelos(), "IdModelo", "IdModelo", caminhao.ModeloIdModelo);
+            ViewData["ModeloIdModelo"] = new SelectList(_cadastroRepository.ObterModelos(), "IdModelo", "IdModelo", caminhao.ModeloIdModelo);
             return View(caminhao);
         }
 
@@ -75,12 +75,12 @@ namespace Volvo.Cadastro.Controllers
                 return NotFound();
             }
 
-            var caminhao = await _cadastroService.ObterCaminhaoPorId((int)id);
+            var caminhao = await _cadastroRepository.ObterCaminhaoPorId((int)id);
             if (caminhao == null)
             {
                 return NotFound();
             }
-            ViewData["ModeloIdModelo"] = new SelectList(_cadastroService.ObterModelos(), "IdModelo", "DescricaoModelo", caminhao.ModeloIdModelo);
+            ViewData["ModeloIdModelo"] = new SelectList(_cadastroRepository.ObterModelos(), "IdModelo", "DescricaoModelo", caminhao.ModeloIdModelo);
             return View(caminhao);
         }
 
@@ -100,7 +100,7 @@ namespace Volvo.Cadastro.Controllers
             {
                 try
                 {
-                    await _cadastroService.AtualizarCaminhao(caminhao);
+                    await _cadastroRepository.AtualizarCaminhao(caminhao);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -115,7 +115,7 @@ namespace Volvo.Cadastro.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModeloIdModelo"] = new SelectList(_cadastroService.ObterModelos(), "IdModelo", "IdModelo", caminhao.ModeloIdModelo);
+            ViewData["ModeloIdModelo"] = new SelectList(_cadastroRepository.ObterModelos(), "IdModelo", "IdModelo", caminhao.ModeloIdModelo);
             return View(caminhao);
         }
 
@@ -127,7 +127,7 @@ namespace Volvo.Cadastro.Controllers
                 return NotFound();
             }
 
-            var caminhao = await _cadastroService.ObterCaminhaoPorId((int)id);
+            var caminhao = await _cadastroRepository.ObterCaminhaoPorId((int)id);
 
             if (caminhao == null)
             {
@@ -142,13 +142,13 @@ namespace Volvo.Cadastro.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _cadastroService.DeletarCaminhao((int)id);
+            await _cadastroRepository.DeletarCaminhao((int)id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool CaminhaoExists(int id)
         {
-            return _cadastroService.CaminhaoExiste(id);
+            return _cadastroRepository.CaminhaoExiste(id);
         }
 
         [AcceptVerbs("GET", "POST")]

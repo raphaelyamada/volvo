@@ -8,17 +8,16 @@ using System.Threading.Tasks;
 using Volvo.Cadastro.Controllers;
 using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Models;
-using Volvo.Cadastro.Services;
 using Xunit;
 
 namespace Volvo.Cadastro.Test
 {
-    public class CadastroServiceTest: BaseServiceTest
+    public class CadastroRepositoryTest: BaseRepositoryTest
     {
         [Fact]
         public async Task ObterCaminhoes_QuandoChamado_RetornaLista()
         {
-            var caminhoes = await service.ObterCaminhoes();
+            var caminhoes = await repository.ObterCaminhoes();
 
             Assert.Equal(3, caminhoes.ToList().Count);
             Assert.IsType<List<Caminhao>>(caminhoes);
@@ -29,7 +28,7 @@ namespace Volvo.Cadastro.Test
         {
             int idPesquisado = 2;
 
-            var caminhao = await service.ObterCaminhaoPorId(idPesquisado);
+            var caminhao = await repository.ObterCaminhaoPorId(idPesquisado);
 
             Assert.True(caminhao != null);
             Assert.Equal(idPesquisado, caminhao.IdCaminhao);
@@ -41,7 +40,7 @@ namespace Volvo.Cadastro.Test
         {
             int idPesquisado = 5;
 
-            var caminhao = await service.ObterCaminhaoPorId(idPesquisado);
+            var caminhao = await repository.ObterCaminhaoPorId(idPesquisado);
 
             Assert.True(caminhao == null);
         }
@@ -49,7 +48,7 @@ namespace Volvo.Cadastro.Test
         [Fact]
         public void ObterModelos_QuandoChamado_RetornaLista()
         {
-            var modelos = service.ObterModelos();
+            var modelos = repository.ObterModelos();
 
             Assert.Equal(2, modelos.ToList().Count);
             Assert.IsType<List<Modelo>>(modelos);
@@ -60,7 +59,7 @@ namespace Volvo.Cadastro.Test
         {
             var caminhao = ObterCaminhaoParaIncluir();
 
-            var retorno = await service.IncluirCaminhao(caminhao);
+            var retorno = await repository.IncluirCaminhao(caminhao);
 
             Assert.IsType<int>(retorno);
         }
@@ -70,7 +69,7 @@ namespace Volvo.Cadastro.Test
         {
             var caminhao = ObterCaminhaoParaAtualizar();
 
-            var retorno = await service.AtualizarCaminhao(caminhao);
+            var retorno = await repository.AtualizarCaminhao(caminhao);
 
             Assert.IsType<int>(retorno);
         }
@@ -80,7 +79,7 @@ namespace Volvo.Cadastro.Test
         {
             int idCaminhaoParaDeletar = 2;
 
-            var retorno = await service.DeletarCaminhao(idCaminhaoParaDeletar);
+            var retorno = await repository.DeletarCaminhao(idCaminhaoParaDeletar);
 
             Assert.IsType<int>(retorno);
         }
@@ -90,7 +89,7 @@ namespace Volvo.Cadastro.Test
         {
             int idCaminhaoParaPesquisar = 1;
 
-            var retorno = service.CaminhaoExiste(idCaminhaoParaPesquisar);
+            var retorno = repository.CaminhaoExiste(idCaminhaoParaPesquisar);
 
             Assert.True(retorno);
         }
@@ -100,7 +99,7 @@ namespace Volvo.Cadastro.Test
         {
             int idCaminhaoParaPesquisar = 10;
 
-            var retorno = service.CaminhaoExiste(idCaminhaoParaPesquisar);
+            var retorno = repository.CaminhaoExiste(idCaminhaoParaPesquisar);
 
             Assert.True(!retorno);
         }

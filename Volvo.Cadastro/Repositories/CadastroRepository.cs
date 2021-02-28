@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Volvo.Cadastro.Data;
 using Volvo.Cadastro.Models;
 
-namespace Volvo.Cadastro.Services
+namespace Volvo.Cadastro.Repositories
 {
-    public class CadastroService: ICadastroService
+    public class CadastroRepository: ICadastroRepository
     {
         CadastroContext _context;
 
-        public CadastroService(CadastroContext context)
+        public CadastroRepository(CadastroContext context)
         {
             _context = context;
         }
